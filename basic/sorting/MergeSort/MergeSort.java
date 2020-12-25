@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class MergeSort {
-
+    // 合并两个已排好序的数组
     private static void merge(int[] nums, int low, int mid, int high, int[] temp) {
         int i = low, j = mid + 1, k = low;
         while (k <= high) {
@@ -15,14 +15,14 @@ public class MergeSort {
                 temp[k++] = nums[j++];
             }
         }
-
-        System.arraycopy(tmp, low, nums, low, high - low + 1);
+        System.arraycopy(temp, low, nums, low, high - low + 1);
     }
 
     private static void mergeSort(int[] nums, int low, int high, int[] temp) {
         if (low >= high) {
             return;
         }
+        // 避免(high+low)/2溢出
         int mid = low + ((high - low) >> 1);
         mergeSort(nums, low, mid, temp);
         mergeSort(nums, mid + 1, high, temp);

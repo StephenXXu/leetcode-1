@@ -78,12 +78,45 @@ public class BinarySearch {
         }
         return -1;
     }
+    public static int myBinarySearch(int[] nums, int target) {
+        int low = 0, high = nums.length;
+        while (low <= high) {
+            //int mid = (high + low) >> 1;
+            int mid = low + ((high - low) >> 1);
+            //-------------------------1
+//            if (target == nums[mid]) {
+//                return mid;
+//            }
+            //-------------------------2
+//            if (nums[mid] < target) {
+//                low = mid + 1;
+//            } else if (nums[mid] > target){
+//                high = mid - 1;
+//            } else {
+//                if (mid ==nums.length -1 || nums[mid+1] != target){
+//                    return mid;
+//                }
+//                low = mid + 1;
+//            }
+            if (nums[mid] > target) {
+                high = mid - 1;
+            } else {
+                if (mid == nums.length - 1 || nums[mid+1] > target) {
+                    return mid;
+                }
+                low = mid + 1;
+            }
+
+        }
+        return -1;
+    }
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 2, 2, 2, 8, 9};
+        int[] nums = {1, 2, 2, 2, 2,3,8,9,9};
         System.out.println(search1(nums, 2)); // 1
         System.out.println(search2(nums, 2)); // 4
         System.out.println(search3(nums, 2)); // 1
         System.out.println(search4(nums, 2)); // 4
+        System.out.println(myBinarySearch(nums, 9)); // 4
     }
 }

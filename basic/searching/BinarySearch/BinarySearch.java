@@ -1,11 +1,11 @@
-public class BinarySearch {
+ class BinarySearchI {
     
-    private static int search(int[] nums, int low, int high, int val) {
+    private static int search(int[] nums, int low, int high, int target) {
         while (low <= high) {
             int mid = low + ((high -low) >> 1);
-            if (nums[mid] == val) {
+            if (nums[mid] == target) {
                 return mid;
-            } else if (nums[mid] < val) {
+            } else if (nums[mid] < target) {
                 low = mid + 1;
             } else {
                 high = mid - 1;
